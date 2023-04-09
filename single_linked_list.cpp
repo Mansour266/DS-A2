@@ -185,6 +185,47 @@ public:
 
     void swap(int first_index, int second_index){
 
+        //This should check if the two indexes are similar then exit
+        if(first_index == second_index)
+            return;
+        Node<T> *previous_first = nullptr, *current_first = head, *previous_second = nullptr, *current_second = head;
+
+        while (first_index--){
+            previous_first = current_first;
+            current_first = current_first->next;
+        }
+
+        while (second_index--){
+            previous_second = current_second;
+            current_second = current_second->next;
+        }
+
+        //This should check if the first number is not the head of the list.
+        if(previous_first != nullptr)
+            previous_first->next = current_second;
+        else
+            head = current_second;
+
+        //This should check if the second number is not the head of the list
+        if(previous_second != nullptr)
+            previous_second->next = current_first;
+        else
+            head = current_first;
+
+
+        //This should swap only the pointers of the next without swapping the array data.
+        Node<T> *temp = current_second->next;
+        current_second->next = current_first->next;
+        current_first->next = temp;
+
+        //This should check if one of the elements is the tail and update the tail.
+        if(current_first == tail)
+            tail = current_second;
+
+        else if(current_second == tail)
+            tail = current_first;
+
+
     }
 
     bool is_empty(){
@@ -229,8 +270,8 @@ int main(){
     ls.insert_at_tail(4);
     ls.insert_at_tail(6);
     ls.insert_at_tail(9);
+    ls.insert_at_tail(10);
+    ls.insert_at_tail(12);
 
-
-    ls.print();
 
 }
