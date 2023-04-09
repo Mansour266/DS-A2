@@ -6,6 +6,10 @@
  * Teaching Assistant: unknown
  * Purpose: Implement array based linked list from scratch.
  */
+#include <bits/stdc++.h>
+
+using namespace std;
+
 
 template <typename T>
 class Node{
@@ -86,6 +90,50 @@ public:
         //this should add the last element of the list.
         temp->next = node;
     }
+
+    T retrieve_at(int index){
+        Node<T> *node = new Node<T>;
+        node = head;
+
+        while (index--){
+            node = node->next;
+        }
+
+        return node->data;
+    }
+
+    void remove_at(int index){
+        Node<T> *node = new Node<T>;
+        node = head;
+        //decremenet the index to get the item before the removed element
+        index--;
+        while (index--)
+            node = node->next;
+        node->next = node->next->next;
+    }
+
+    void replace_at(T element, int index){
+        Node<T> *node = new Node<T>;
+        node = head;
+        while (index--){
+            node = node->next;
+        }
+        node->data = element;
+    }
+
+    bool is_item_at_equal(T element, int index){
+        Node<T> *node = new Node<T>;
+        node = head;
+        while (index--)
+            node = node->next;
+
+        return node->data == element;
+    }
+
+    bool is_empty(){
+        return head == nullptr;
+    }
+
 };
 
 
@@ -96,5 +144,6 @@ int main(){
     ls.insert(7);
     ls.insert(9);
     ls.insert(2);
+
 
 }
