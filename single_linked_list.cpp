@@ -206,18 +206,31 @@ public:
         return size;
     }
 
+    void print(){
+        Node<T> *node = head;
+        //protective condition
+        if(head == nullptr)
+            return;
+
+        while (node->next != nullptr){
+            cout << node->data << ' ';
+            node = node->next;
+        }
+        //print last element
+        cout << tail->data << '\n';
+    }
+
 
 };
 
 
 int main(){
     array_list<int> ls;
+    ls.insert_at_tail(4);
+    ls.insert_at_tail(6);
+    ls.insert_at_tail(9);
 
-    ls.insert_at_tail(4);
-    ls.insert_at_tail(4);
-    ls.insert_at_tail(4);
-    ls.insert_at_tail(4);
 
-    cout << ls.linked_list_size();
+    ls.print();
 
 }
