@@ -38,13 +38,14 @@ public:
 };
 
 template <typename T>
-class array_list{
+class single_linked_list{
 private:
     Node<T> *head;
     Node<T> *tail;
 public:
-    array_list(){
+    single_linked_list(){
         head = nullptr;
+        tail = nullptr;
     }
 
     void insert_at_head(T element){
@@ -141,9 +142,8 @@ public:
     }
 
     void remove_at(int index){
-        Node<T> *node = new Node<T>;
-        node = head;
-        //decremenet the index to get the item before the removed element
+        Node<T> *node = head;
+        //decrement the index to get the item before the removed element
         index--;
         while (index--)
             node = node->next;
@@ -151,8 +151,7 @@ public:
     }
 
     void replace_at(T element, int index){
-        Node<T> *node = new Node<T>;
-        node = head;
+        Node<T> *node = head;
         while (index--){
             node = node->next;
         }
@@ -175,8 +174,7 @@ public:
     }
 
     bool is_item_at_equal(T element, int index){
-        Node<T> *node = new Node<T>;
-        node = head;
+        Node<T> *node = head;
         while (index--)
             node = node->next;
 
@@ -266,7 +264,7 @@ public:
 
 
 int main(){
-    array_list<int> ls;
+    single_linked_list<int> ls;
     ls.insert_at_tail(4);
     ls.insert_at_tail(6);
     ls.insert_at_tail(9);
