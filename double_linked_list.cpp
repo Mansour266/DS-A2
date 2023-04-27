@@ -213,27 +213,6 @@ public:
         return node->data == element;
     }
 
-    //Swap is still not working
-
-
-    void reverse(){
-        Node<T> *current = head;
-
-        while (current != nullptr)
-        {
-            //This should swap all the previous and next pointers of each element
-            swap(current->next, current->prev);
-            current = current->prev;
-        }
-        //This should finish by swapping the head and tail.
-        swap(head, tail);
-
-    }
-
-    bool is_empty(){
-        return head == nullptr;
-    }
-
     int double_linked_list_size(){
         int size{0};
         if(head != nullptr){
@@ -247,6 +226,77 @@ public:
 
         return size;
     }
+
+    //Swap is still not working
+    void swap(int first_index, int second_index){
+
+        //This should check if the two indexes are similar or if one of them is out of range then exit
+        if (first_index == second_index || first_index < 0 || second_index < 0 || first_index >= double_linked_list_size()
+        || second_index >= double_linked_list_size()) {
+            return;
+        }
+
+        Node<T> *current_first = head, *current_second = head;
+
+        while (first_index--){
+            current_first = current_first->next;
+        }
+
+        while (second_index--){
+            current_second = current_second->next;
+        }
+
+        Node<T>* temp;
+        temp = current_first->next;
+        current_first->next = current_second->next;
+        current_second->next = temp;
+
+        if (current_first->next != nullptr)
+            current_first->next->prev = current_first;
+        if (current_second->next != nullptr)
+            current_second->next->prev = current_second;
+
+        temp = current_first->prev;
+        current_first->prev = current_second->prev;
+        current_second->prev = temp;
+
+        if (current_first->prev != nullptr)
+            current_first->prev->next = current_first;
+        if (current_second->prev != nullptr)
+            current_second->prev->next = current_second;
+
+        //This should swap the head and tail
+        if(current_first == head)
+            head = current_second;
+        else if(current_second == head)
+            head = current_first;
+
+        if(current_first == tail)
+            tail = current_second;
+
+        else if(current_second == tail)
+            tail = current_first;
+
+    }
+
+    void reverse(){
+        Node<T> *current = head;
+
+        while (current != nullptr)
+        {
+            //This should swap all the previous and next pointers of each element
+            //swap(current->next, current->prev);
+            current = current->prev;
+        }
+        //This should finish by swapping the head and tail.
+        //swap(head, tail);
+
+    }
+
+    bool is_empty(){
+        return head == nullptr;
+    }
+
 
     //See about freeing memory
     void clear(){
@@ -290,7 +340,7 @@ int main(){
     dll.insert_at_tail(8);
     dll.insert_at_tail(9);
 
-   dll.reverse();
+   dll.swap(3,4);
    dll.forward_print();
 
 }
