@@ -245,6 +245,10 @@ public:
         return size;
     }
 
+    void clear(){
+        head = tail = nullptr;
+    }
+
     void print(){
         Node<T> *node = head;
         //protective condition
@@ -263,13 +267,3 @@ public:
 };
 
 
-int main(){
-    single_linked_list<int> ls;
-    ls.insert_at_tail(4);
-    ls.insert_at_tail(6);
-    ls.insert_at_tail(9);
-    ls.insert_at_tail(10);
-    ls.insert_at_tail(12);
-
-
-}
