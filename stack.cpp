@@ -72,17 +72,17 @@ public:
 };
 
 
-int main(){
-    Stack<char> st;
-    st.Top();
-
-    cout << boolalpha;
-    cout << endl << st.is_empty() << endl;
-
-    cout << "Stack size:" << st.stack_size() << endl;
-
-    st.print();
-
-    st.clear();
-    st.print();
-}
+//int main(){
+//    Stack<char> st;
+//    st.Top();
+//
+//    cout << boolalpha;
+//    cout << endl << st.is_empty() << endl;
+//
+//    cout << "Stack size:" << st.stack_size() << endl;
+//
+//    st.print();
+//
+//    st.clear();
+//    st.print();
+//}
