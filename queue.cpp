@@ -90,16 +90,16 @@ public:
 
 };
 
-int main(){
-    Queue<int> q;
-
-    q.enqueue(5);
-    q.enqueue(6);
-    q.enqueue(7);
-    q.enqueue(8);
-
-    cout << q.dequeue() << endl;
-    cout << q.queue_size() << endl;
-    q.print();
-
-}
+//int main(){
+//    Queue<int> q;
+//
+//    q.enqueue(5);
+//    q.enqueue(6);
+//    q.enqueue(7);
+//    q.enqueue(8);
+//
+//    cout << q.dequeue() << endl;
+//    cout << q.queue_size() << endl;
+//    q.print();
+//
+//}
