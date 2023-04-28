@@ -58,6 +58,7 @@ string infix_to_postfix(string expression){
         if (expression[i] == ' ' || expression[i] == ',')
             continue;
 
+        //if the character is an operator then pop two elements and perform the operation then put the result back.
         else if(is_operator(expression[i])){
             while (!s.empty() && s.top() != '(' && is_higher_precedence(s.top(), expression[i])){
                 postfix += s.top();
