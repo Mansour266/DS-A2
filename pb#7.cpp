@@ -9,38 +9,42 @@
 
 #include "queue.cpp"
 
-#include <bits/stdc++.h>
+#include <algorithm>
 
 using namespace std;
 
-queue<int> queue_sort(queue<int> q){
-    int arr[q.size()];
+Queue<int> queue_sort(Queue<int> q){
+    int length = q.queue_size();
+    /*
+     * This defines a temporary array to move the queue data to it
+     * then sort the array and move the sorted data back into the queue.
+     */
 
-    int length = q.size();
+    int arr[length];
 
     for (int i = 0; i < length; ++i) {
-        arr[i] = q.front();
-        q.pop();
+        arr[i] = q.first();
+        q.dequeue();
     }
     sort(arr, arr + length);
     for (int i = 0; i < length; ++i) {
-        q.push(arr[i]);
+        q.enqueue(arr[i]);
     }
 
     return q;
 }
 
 int main(){
-    queue<int> q;
-    q.push(3);
-    q.push(15);
-    q.push(2);
-    q.push(4);
+    Queue<int> q;
+    q.enqueue(3);
+    q.enqueue(15);
+    q.enqueue(2);
+    q.enqueue(4);
 
-    queue<int> final =  queue_sort(q);
+    Queue<int> final =  queue_sort(q);
 
-    while(!final.empty()){
-        cout << final.front() << " ";
-        final.pop();
+    while(!final.is_empty()){
+        cout << final.first() << " ";
+        final.dequeue();
     }
 }
